@@ -1,5 +1,5 @@
 * {
-  transition: background-color 0.3s ease;
+  transition: background-color 0.1 ease;
 }
 html,body {
   width: 100%;
@@ -32,7 +32,7 @@ html,body {
 }
 
 .main-body {
-  width: 40%;
+  width: 550px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 100px;
@@ -106,7 +106,6 @@ html,body {
 
 .activator-anchor.activated {
   background: linear-gradient(hsl(192, 100%, 67%),hsl(280, 87%, 65%));
-  border:0;
 }
 
 .custom-todo-input.light-theme {
@@ -148,7 +147,6 @@ html,body {
 
 .todosContainer {
   margin-top: 40px;
-  border: 1px solid hsl(0, 0%, 95%);
   border-radius: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
@@ -159,7 +157,6 @@ html,body {
 
 .todosContainer.dark-theme {
   background-color: #25273c;
-  border-color:  #25273c;
 }
 
 .todosContainer .custom-todo-input {
@@ -182,4 +179,116 @@ html,body {
 
 .remove-todo-icon {
   content: url("../images/icon-cross.svg");
+}
+
+.border-bottom.dark-theme {
+  border-bottom: 1px solid #2c2e43;
+}
+
+.border-bottom.light-theme {
+  border-bottom: 1px solid #e7e7ea;
+}
+
+.todos-controller {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 15px;
+  font-size: 14px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  align-items: baseline;
+}
+
+.todos-controller.light-theme {
+  background-color: white;
+}
+
+.todos-controller.dark-theme {
+  background-color: #25273c;
+  color: #676980;
+}
+
+.filter-selector {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+}
+
+.filter-selector.light-theme {
+  color: #9c9ba1;
+}
+
+.filter-selector.dark-theme {
+  color: #676980;
+}
+
+.controllor-anchor {
+  cursor: pointer;
+  text-decoration: unset;
+  border:unset;
+  background-color: unset;
+}
+
+.controllor-anchor.light-theme {
+  color: #9c9ba1;
+}
+
+.controllor-anchor.light-theme:hover{
+  color: #8b8c98;
+}
+
+.controllor-anchor.dark-theme {
+  color: #676980;
+}
+
+
+.controllor-anchor.dark-theme:hover {
+  color: #a8a9b6;
+}
+
+.controllor-anchor.active-button {
+  color: #5e7fbd;
+}
+
+.controllor-anchor.active-button:hover{
+  color:  #5e7fbd;
+}
+
+@media screen and (max-width: 700px){
+  .main-body {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px;
+  }  
+  #main.light-theme {
+    background-image: url(../images/bg-mobile-light.jpg);
+  }
+  
+  #main.dark-theme {
+    background-image: url(../images/bg-mobile-dark.jpg);
+  }
+
+  .custom-todo-text {
+    width: 75%;
+  }
+
+  .filter-selector {
+    position: absolute;
+    width: calc(90vw - 29px);
+    margin-top: 50px;
+    padding: 15px;
+    justify-content: space-around;
+    margin-left: -15px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+  }
+
+  .filter-selector.dark-theme {
+    background-color: #25273c;
+  }
+
+  .filter-selector.light-theme {
+    background-color: white;
+  }
 }

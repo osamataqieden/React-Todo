@@ -3,14 +3,26 @@ import React from 'react';
 import Header from './Header';
 import NewTodo from './NewTodo';
 import Todos from "./Todos";
+import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
+
 
 class App extends React.Component{
 
   constructor(props){
     super(props);
-    this.state = {theme: "light-theme", todoLists:[]};
-    this.id = 0;
-    //TODO: Read todos and theme from local storage
+    var list = [];
+    var theme = "light-theme";
+    if(window.localStorage.getItem("list") !== null){
+      list = JSON.parse(window.localStorage.getItem("list"));
+    }
+    if(window.localStorage.getItem("theme") !== null){
+      theme = window.localStorage.getItem("theme");
+    }
+    if(window.localStorage.getItem("id") !== null){
+      this.id =  parseInt(window.localStorage.getItem("id"));
+    }
+    else this.id = 0;
+    this.state = {theme: theme, todoLists:list};
   }
 
   toggleTheme = () => {
@@ -39,10 +51,10 @@ class App extends React.Component{
       }
     });
     this.id++;
-    console.log(this.state.todoLists);
   }
 
   updateTodosList = (todoList) => {
+    todoList = todoList.sort((a,b) => (a.isChecked == b.isChecked) ? 0 : a.isChecked ? -1 : 1);
     this.setState(() => {
       return {
         todoLists: todoList
@@ -62,6 +74,12 @@ class App extends React.Component{
     console.log(this.state.todoLists);
   }
 
+  componentDidUpdate(){
+    window.localStorage.setItem("list", JSON.stringify(this.state.todoLists));
+    window.localStorage.setItem("theme", this.state.theme);
+    window.localStorage.setItem("id", this.id);
+  }
+
   render(){
     return(
       <main id="main" className={this.state.theme}>
@@ -70,7 +88,7 @@ class App extends React.Component{
           <NewTodo addNewTodoHandler={this.addNewTodoHandler} theme={this.state.theme} />
           <Todos removeTodo={this.removeTodo} updateTodosList={this.updateTodosList} todoLists={this.state.todoLists} theme={this.state.theme} /> 
         </div>
-    </main>
+      </main>
     )
   }
 };

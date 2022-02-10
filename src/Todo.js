@@ -11,6 +11,7 @@ class Todo extends React.Component {
     }
   }
   removeTodo = () => {
+    console.log("In Todo");
     this.props.removeTodo(this.props.id);
   }
   render() {
@@ -21,7 +22,7 @@ class Todo extends React.Component {
       todoText += "activated ";
     }
     return (
-      <div className={"custom-todo-input " + this.props.theme}>
+      <div className={"custom-todo-input border-bottom " + this.props.theme}>
         <div className={"custom-todo-activator " + this.props.theme}>
           <a onClick={this.activationHandler} className={anchorClassName + this.props.theme}>
             <img className={"finished-todo"} />
