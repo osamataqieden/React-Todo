@@ -3,8 +3,6 @@ import React from 'react';
 import Header from './Header';
 import NewTodo from './NewTodo';
 import Todos from "./Todos";
-import {DragDropContext, Draggable, Droppable} from 'react-beautiful-dnd';
-
 
 class App extends React.Component{
 
