@@ -152,7 +152,7 @@ html,body {
 }
 
 .todosContainer.light-theme {
-  background-color: hsl(0, 0%, 95%);
+  background-color: white;
 }
 
 .todosContainer.dark-theme {
